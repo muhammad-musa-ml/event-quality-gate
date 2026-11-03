@@ -206,6 +206,32 @@ describe('ReadoutAccumulator: clustered against request-level intervals', () => 
   });
 });
 
+describe('ReadoutAccumulator: does the interval exclude zero', () => {
+  // 40 users per arm, 10 requests each, no clustering beyond the spread of 1 to 2 (or 6 to 7) successes per user.
+  const arm = (name: string, prefix: string, base: number) =>
+    Array.from({ length: 40 }, (_, u) => binaryRows(name, `${prefix}${u}`, [[base + (u % 3 === 0 ? 1 : 0), 10]])).flat();
+
+  it('says so for a clear increase, both ways of building the interval', () => {
+    const cmp = report([...arm('control', 'c', 1), ...arm('treatment', 't', 6)]).comparisons[0]!;
+    expect(cmp.clustered.diff).toBeGreaterThan(0.4);
+    expect(cmp.clusteredExcludesZero).toBe(true);
+    expect(cmp.naiveExcludesZero).toBe(true);
+  });
+
+  it('says so for a clear decrease', () => {
+    const cmp = report([...arm('control', 'c', 6), ...arm('treatment', 't', 1)]).comparisons[0]!;
+    expect(cmp.clustered.diff).toBeLessThan(-0.4);
+    expect(cmp.clusteredExcludesZero).toBe(true);
+    expect(cmp.naiveExcludesZero).toBe(true);
+  });
+
+  it('says neither for two arms drawn alike', () => {
+    const cmp = report([...arm('control', 'c', 3), ...arm('treatment', 't', 3)]).comparisons[0]!;
+    expect(cmp.clusteredExcludesZero).toBe(false);
+    expect(cmp.naiveExcludesZero).toBe(false);
+  });
+});
+
 describe('ReadoutAccumulator: CUPED', () => {
   // Covariate c = [1, 2, 3, 4] in both arms; control y = [3, 3, 5, 9]; treatment y = [3, 7, 9, 9]. theta = 2; see stats.test.ts.
   const rows: Array<[string, string, number]> = [

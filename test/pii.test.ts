@@ -58,4 +58,9 @@ describe('detectPii: values that are not flagged', () => {
     expect(detectPii('1555010019912')).toBeNull();
     expect(detectPii('9555-010-01990')).toBeNull();
   });
+
+  it('does not match the tail of a longer dashed or dotted number', () => {
+    expect(detectPii('12555-010-0199')).toBeNull();
+    expect(detectPii('1.555.010.0199')).toBeNull();
+  });
 });
