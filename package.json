@@ -24,8 +24,10 @@
     "results:faults": "node dist/scripts/fault-injection.js",
     "results:runtime": "node dist/scripts/bench-runtime.js",
     "results:tables": "node dist/scripts/render-tables.js",
-    "mutation-check": "node dist/scripts/mutation-check.js",
-    "demo": "node dist/scripts/demo.js"
+    "tables:check": "node dist/scripts/render-tables.js --check",
+    "examples": "node dist/scripts/make-examples.js",
+    "examples:check": "node dist/scripts/make-examples.js --check",
+    "mutation-check": "node dist/scripts/mutation-check.js"
   },
   "dependencies": {
     "typescript": "6.0.3"

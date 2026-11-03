@@ -1,0 +1,49 @@
+name: Checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm test
+      - name: Example files match their generator
+        run: npm run examples:check
+      - name: README tables match the result files
+        run: npm run tables:check
+      - name: The gate passes on the clean samples
+        run: |
+          node dist/src/cli.js lint-code examples/code/clean --plan examples/tracking-plan.json
+          node dist/src/cli.js check-stream examples/streams/clean.jsonl --plan examples/tracking-plan.json
+          node dist/src/cli.js readout examples/experiment/clean.jsonl --split control=1,treatment=1 --covariates examples/experiment/pre-period.jsonl
+      - name: The gate fails with exit code 1 on the planted-fault samples and on an empty stream
+        run: |
+          expect_exit_1() {
+            set +e
+            "$@" > "$RUNNER_TEMP/gate-output.txt"
+            code=$?
+            set -e
+            cat "$RUNNER_TEMP/gate-output.txt"
+            echo "exit code: $code"
+            test "$code" -eq 1
+          }
+          : > "$RUNNER_TEMP/empty.jsonl"
+          expect_exit_1 node dist/src/cli.js lint-code examples/code/faulty --plan examples/tracking-plan.json
+          expect_exit_1 node dist/src/cli.js check-stream examples/streams/faulty.jsonl --plan examples/tracking-plan.json
+          expect_exit_1 node dist/src/cli.js check-stream "$RUNNER_TEMP/empty.jsonl" --plan examples/tracking-plan.json
+          expect_exit_1 node dist/src/cli.js readout examples/experiment/srm.jsonl --split control=1,treatment=1
