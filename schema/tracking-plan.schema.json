@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/muhammad-musa-ml/event-quality-gate/blob/main/schema/tracking-plan.schema.json",
+  "title": "Tracking plan",
+  "description": "Event names, their properties and an optional funnel order. Checks that need to look across the file (a required property must be declared, a funnel step must be a declared event) are made by the eqg validator, not by this schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "events"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "description": { "type": "string" },
+    "version": { "const": 1 },
+    "events": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "pattern": "^\\S(.*\\S)?$" },
+      "additionalProperties": { "$ref": "#/$defs/event" }
+    },
+    "funnel": {
+      "description": "Event names in the order a user is expected to reach them.",
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": { "type": "string" },
+        "properties": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/property" }
+        },
+        "required": {
+          "description": "Names of properties that every event of this name must carry.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "property": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": { "enum": ["string", "number", "integer", "boolean"] },
+        "enum": {
+          "description": "The only values allowed. Each must match the declared type.",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "anyOf": [{ "type": "string" }, { "type": "number" }, { "type": "boolean" }]
+          }
+        },
+        "pii": {
+          "description": "True when the property is expected to carry personal data. PII-shaped values are reported in any property that does not set this.",
+          "type": "boolean"
+        },
+        "maxDistinct": {
+          "description": "Upper bound on the number of distinct values seen in a stream. Not allowed with enum or on a boolean.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "description": { "type": "string" }
+      }
+    }
+  }
+}

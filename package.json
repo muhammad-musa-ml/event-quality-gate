@@ -1,0 +1,41 @@
+{
+  "name": "event-quality-gate",
+  "version": "0.1.0",
+  "description": "CI gate for analytics instrumentation and experiment readouts: tracking-plan checks on source and event streams, sample ratio mismatch, user-clustered ratio-metric intervals, CUPED",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "eqg": "dist/src/cli.js"
+  },
+  "files": [
+    "dist/src",
+    "schema"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p test/tsconfig.json",
+    "test": "vitest run",
+    "eqg": "node dist/src/cli.js",
+    "results:coverage": "node dist/scripts/simulate-coverage.js",
+    "results:faults": "node dist/scripts/fault-injection.js",
+    "results:runtime": "node dist/scripts/bench-runtime.js",
+    "results:tables": "node dist/scripts/render-tables.js",
+    "mutation-check": "node dist/scripts/mutation-check.js",
+    "demo": "node dist/scripts/demo.js"
+  },
+  "dependencies": {
+    "typescript": "6.0.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.0",
+    "@types/node": "^22.20.5",
+    "ajv": "^8.20.0",
+    "eslint": "^10.14.0",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.1.0"
+  }
+}

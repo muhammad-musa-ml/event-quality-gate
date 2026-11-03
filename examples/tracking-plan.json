@@ -1,0 +1,55 @@
+{
+  "$schema": "../schema/tracking-plan.schema.json",
+  "version": 1,
+  "description": "Synthetic plan for a workspace product's onboarding flow. Used by the examples, the tests and the measurements.",
+  "events": {
+    "signup_completed": {
+      "description": "A new account finished sign-up.",
+      "properties": {
+        "method": { "type": "string", "enum": ["email", "google", "sso"] },
+        "referrer": { "type": "string", "maxDistinct": 40 },
+        "contact_email": { "type": "string", "pii": true }
+      },
+      "required": ["method"]
+    },
+    "workspace_created": {
+      "description": "The account created its first workspace.",
+      "properties": {
+        "workspace_id": { "type": "string" },
+        "plan_tier": { "type": "string", "enum": ["free", "plus", "business"] },
+        "seats": { "type": "integer" }
+      },
+      "required": ["workspace_id", "plan_tier"]
+    },
+    "page_created": {
+      "description": "A page was created in a workspace.",
+      "properties": {
+        "workspace_id": { "type": "string" },
+        "template": { "type": "string", "enum": ["blank", "meeting_notes", "project_plan", "wiki"] },
+        "source": { "type": "string", "enum": ["sidebar", "shortcut", "onboarding"] },
+        "block_count": { "type": "integer" }
+      },
+      "required": ["workspace_id", "template"]
+    },
+    "invite_sent": {
+      "description": "A member invited teammates.",
+      "properties": {
+        "workspace_id": { "type": "string" },
+        "invitee_count": { "type": "integer" },
+        "role": { "type": "string", "enum": ["member", "guest"] },
+        "bulk": { "type": "boolean" }
+      },
+      "required": ["workspace_id", "invitee_count", "role"]
+    },
+    "onboarding_step_completed": {
+      "description": "One checklist step in the onboarding flow was finished or skipped.",
+      "properties": {
+        "step": { "type": "string", "enum": ["profile", "import", "first_page", "invite"] },
+        "duration_ms": { "type": "number" },
+        "skipped": { "type": "boolean" }
+      },
+      "required": ["step", "skipped"]
+    }
+  },
+  "funnel": ["signup_completed", "workspace_created", "page_created", "invite_sent"]
+}
