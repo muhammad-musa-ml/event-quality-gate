@@ -1,0 +1,413 @@
+{
+  "description": "One defect at a time put into a copy of the code; the tests are run against the copy. Killed means the tests failed.",
+  "command": "node dist/scripts/mutation-check.js",
+  "mutants": 56,
+  "killed": 56,
+  "survived": 0,
+  "notRun": 0,
+  "outcomes": [
+    {
+      "id": "L1",
+      "file": "src/lint-code.ts",
+      "defect": "a backtick string with no substitution is no longer read as a literal event name",
+      "status": "killed by nearby tests",
+      "detail": "test/lint-code.test.ts > lintSource: calls that match the plan > passes clean calls in several syntaxes and counts them"
+    },
+    {
+      "id": "L2",
+      "file": "src/lint-code.ts",
+      "defect": "a value wrapped in `as` is no longer read through",
+      "status": "killed by nearby tests",
+      "detail": "test/lint-code.test.ts > lintSource: what cannot be decided is reported, never passed > reads through casts and parentheses"
+    },
+    {
+      "id": "L3",
+      "file": "src/lint-code.ts",
+      "defect": "required properties are reported missing even when a spread may supply them",
+      "status": "killed by nearby tests",
+      "detail": "test/lint-code.test.ts > lintSource: what cannot be decided is reported, never passed > reports a spread once, and still checks the explicit keys"
+    },
+    {
+      "id": "L4",
+      "file": "src/lint-code.ts",
+      "defect": "a property set to undefined counts as present",
+      "status": "killed by nearby tests",
+      "detail": "test/lint-code.test.ts > lintSource: what cannot be decided is reported, never passed > treats a literal undefined as absent"
+    },
+    {
+      "id": "L5",
+      "file": "src/lint-code.ts",
+      "defect": "the enum test is inverted",
+      "status": "killed by nearby tests",
+      "detail": "test/lint-code.test.ts > lintSource: calls that match the plan > passes clean calls in several syntaxes and counts them"
+    },
+    {
+      "id": "L6",
+      "file": "src/lint-code.ts",
+      "defect": "PII-shaped literals are reported even where the plan declares pii",
+      "status": "killed by nearby tests",
+      "detail": "test/lint-code.test.ts > lintSource: PII-shaped literals > accepts the same value in a property declared pii"
+    },
+    {
+      "id": "L7",
+      "file": "src/lint-code.ts",
+      "defect": "event names are looked up with inherited keys (constructor, toString)",
+      "status": "killed by nearby tests",
+      "detail": "test/lint-code.test.ts > lintSource: findings and where they point > treats an inherited name as unknown"
+    },
+    {
+      "id": "L8",
+      "file": "src/lint-code.ts",
+      "defect": "a non-literal event name is silently passed",
+      "status": "killed by nearby tests",
+      "detail": "test/lint-code.test.ts > lintSource: what cannot be decided is reported, never passed > reports a non-literal event name as unverifiable"
+    },
+    {
+      "id": "L9",
+      "file": "src/lint-code.ts",
+      "defect": "a scan that found no tracker calls passes",
+      "status": "killed by nearby tests",
+      "detail": "test/lint-code.test.ts > lintPaths > fails a scan that finds no tracker calls at all"
+    },
+    {
+      "id": "L10",
+      "file": "src/lint-code.ts",
+      "defect": "syntax errors are not reported",
+      "status": "killed by nearby tests",
+      "detail": "test/lint-code.test.ts > lintSource: syntax errors are not skipped quietly > reports a parse error with its position"
+    },
+    {
+      "id": "L11",
+      "file": "src/lint-code.ts",
+      "defect": "this.analytics.track is never matched",
+      "status": "killed by nearby tests",
+      "detail": "test/lint-code.test.ts > lintSource: which calls count as tracker calls > uses the trackers it is given"
+    },
+    {
+      "id": "L12",
+      "file": "src/lint-code.ts",
+      "defect": "literal type mismatches are not reported",
+      "status": "killed by nearby tests",
+      "detail": "test/lint-code.test.ts > lintSource: findings and where they point > reports every kind of literal type mismatch"
+    },
+    {
+      "id": "A1",
+      "file": "src/plan.ts",
+      "defect": "maxDistinct of zero is accepted",
+      "status": "killed by nearby tests",
+      "detail": "test/plan.test.ts > parsePlan: refuses a malformed plan and says where > maxDistinct of zero"
+    },
+    {
+      "id": "A2",
+      "file": "src/plan.ts",
+      "defect": "inherited names count as declared events",
+      "status": "killed by nearby tests",
+      "detail": "test/plan.test.ts > reserved and inherited names > looks events and properties up as own keys only"
+    },
+    {
+      "id": "A3",
+      "file": "src/plan.ts",
+      "defect": "a one-step funnel is accepted",
+      "status": "killed by nearby tests",
+      "detail": "test/plan.test.ts > parsePlan: refuses a malformed plan and says where > funnel with one step"
+    },
+    {
+      "id": "A4",
+      "file": "src/plan.ts",
+      "defect": "duplicate enum values are accepted",
+      "status": "killed by nearby tests",
+      "detail": "test/plan.test.ts > parsePlan: refuses a malformed plan and says where > an enum with a duplicate"
+    },
+    {
+      "id": "A5",
+      "file": "src/plan.ts",
+      "defect": "a fractional number matches the integer type",
+      "status": "killed by nearby tests",
+      "detail": "test/plan.test.ts > parsePlan: refuses a malformed plan and says where > a fractional integer enum value"
+    },
+    {
+      "id": "S1",
+      "file": "src/check-stream.ts",
+      "defect": "an event exactly at the lateness tolerance is called late",
+      "status": "killed by nearby tests",
+      "detail": "test/check-stream.test.ts > late events and clock skew > allows a delay exactly at the tolerance and flags one millisecond more"
+    },
+    {
+      "id": "S2",
+      "file": "src/check-stream.ts",
+      "defect": "a clock exactly at the skew tolerance is called skewed",
+      "status": "killed by nearby tests",
+      "detail": "test/check-stream.test.ts > late events and clock skew > allows a client clock ahead by exactly the tolerance and flags one millisecond more"
+    },
+    {
+      "id": "S3",
+      "file": "src/check-stream.ts",
+      "defect": "equal funnel timestamps are called out of order",
+      "status": "killed by nearby tests",
+      "detail": "test/check-stream.test.ts > funnel order > allows equal timestamps and does not require every step"
+    },
+    {
+      "id": "S4",
+      "file": "src/check-stream.ts",
+      "defect": "duplicate event ids are not found",
+      "status": "killed by nearby tests",
+      "detail": "test/check-stream.test.ts > duplicate event ids > flags the second and later copies, and does not check a copy again"
+    },
+    {
+      "id": "S5",
+      "file": "src/check-stream.ts",
+      "defect": "the distinct-value bound is off by one",
+      "status": "killed by nearby tests",
+      "detail": "test/check-stream.test.ts > high-cardinality properties > stays quiet at the bound and flags the first value past it, once per property"
+    },
+    {
+      "id": "S6",
+      "file": "src/check-stream.ts",
+      "defect": "a stream with no events passes",
+      "status": "killed by nearby tests",
+      "detail": "test/check-stream.test.ts > a stream that checked nothing fails > reports no-events for empty input"
+    },
+    {
+      "id": "S7",
+      "file": "src/check-stream.ts",
+      "defect": "PII-shaped values are reported even where the plan declares pii",
+      "status": "killed by nearby tests",
+      "detail": "test/check-stream.test.ts > PII-shaped values > accepts them in a property declared pii"
+    },
+    {
+      "id": "S8",
+      "file": "src/check-stream.ts",
+      "defect": "a required property with a false or zero value counts as missing",
+      "status": "killed by nearby tests",
+      "detail": "test/check-stream.test.ts > schema conformance > flags a missing required property, and null in a required property as a type mismatch"
+    },
+    {
+      "id": "S9",
+      "file": "src/check-stream.ts",
+      "defect": "an ISO timestamp without an offset is accepted",
+      "status": "killed by nearby tests",
+      "detail": "test/check-stream.test.ts > envelope problems > flags an ISO ts without an offset"
+    },
+    {
+      "id": "S10",
+      "file": "src/check-stream.ts",
+      "defect": "a byte order mark is not removed",
+      "status": "killed by nearby tests",
+      "detail": "test/check-stream.test.ts > checkStreamFile > reads CRLF files, blank lines, a byte order mark and a last line with no newline, with true line numbers"
+    },
+    {
+      "id": "S11",
+      "file": "src/check-stream.ts",
+      "defect": "a day is 86.4 seconds",
+      "status": "killed by nearby tests",
+      "detail": "test/check-stream.test.ts > parseDuration > reads units"
+    },
+    {
+      "id": "S12",
+      "file": "src/check-stream.ts",
+      "defect": "the line length limit is not applied",
+      "status": "killed by nearby tests",
+      "detail": "test/check-stream.test.ts > invalid JSON > flags a line over the length limit without parsing it"
+    },
+    {
+      "id": "S13",
+      "file": "src/check-stream.ts",
+      "defect": "events without received_at are not counted as unchecked",
+      "status": "killed by nearby tests",
+      "detail": "test/check-stream.test.ts > envelope problems > flags a received_at that is missing when it is required, and otherwise says it was not checked"
+    },
+    {
+      "id": "T1",
+      "file": "src/stats.ts",
+      "defect": "the covariance term of the delta method has the wrong sign",
+      "status": "killed by nearby tests",
+      "detail": "test/stats.test.ts > ratioInterval: the delta method > hand-computed: four users, requests x = [2, 4, 3, 3], successes y = [1, 2, 1, 2]"
+    },
+    {
+      "id": "T2",
+      "file": "src/stats.ts",
+      "defect": "the ratio is not squared in the delta method",
+      "status": "killed by nearby tests",
+      "detail": "test/stats.test.ts > ratioInterval: the delta method > hand-computed: four users, requests x = [2, 4, 3, 3], successes y = [1, 2, 1, 2]"
+    },
+    {
+      "id": "T3",
+      "file": "src/stats.ts",
+      "defect": "the delta method divides by the mean of the denominator, not its square",
+      "status": "killed by nearby tests",
+      "detail": "test/stats.test.ts > ratioInterval: the delta method > hand-computed: four users, requests x = [2, 4, 3, 3], successes y = [1, 2, 1, 2]"
+    },
+    {
+      "id": "T4",
+      "file": "src/stats.ts",
+      "defect": "the variance of the denominator uses n instead of n - 1",
+      "status": "killed by nearby tests",
+      "detail": "test/stats.test.ts > Moments2 > matches a direct two-pass computation on random data"
+    },
+    {
+      "id": "T5",
+      "file": "src/stats.ts",
+      "defect": "the chi-square test has one degree of freedom too many",
+      "status": "killed by nearby tests",
+      "detail": "test/stats.test.ts > srmTest > hand-computed: 5000 vs 5200 users on a 50/50 split"
+    },
+    {
+      "id": "T6",
+      "file": "src/stats.ts",
+      "defect": "the chi-square statistic is not divided by the expected count",
+      "status": "killed by nearby tests",
+      "detail": "test/stats.test.ts > srmTest > hand-computed: 5000 vs 5200 users on a 50/50 split"
+    },
+    {
+      "id": "T7",
+      "file": "src/stats.ts",
+      "defect": "the control arm adds no variance to the difference",
+      "status": "killed by nearby tests",
+      "detail": "test/stats.test.ts > ratioDifference > subtracts the estimates and adds the variances of two independent arms"
+    },
+    {
+      "id": "T8",
+      "file": "src/stats.ts",
+      "defect": "the CUPED slope is halved",
+      "status": "killed by nearby tests",
+      "detail": "test/stats.test.ts > cuped > hand-computed: theta = 2, the same difference, and a variance cut to one sixth"
+    },
+    {
+      "id": "T9",
+      "file": "src/stats.ts",
+      "defect": "the upper tail of the normal quantile has the wrong sign",
+      "status": "killed by nearby tests",
+      "detail": "test/stats.test.ts > normalQuantile > p=0.995"
+    },
+    {
+      "id": "T10",
+      "file": "src/stats.ts",
+      "defect": "merging two sets of moments weighs them wrongly",
+      "status": "killed by nearby tests",
+      "detail": "test/stats.test.ts > Moments2.merge > equals pushing every pair into one accumulator"
+    },
+    {
+      "id": "T11",
+      "file": "src/stats.ts",
+      "defect": "the series branch of the incomplete gamma function returns the wrong tail",
+      "status": "killed by nearby tests",
+      "detail": "test/stats.test.ts > normalQuantile > p=0.95"
+    },
+    {
+      "id": "T12",
+      "file": "src/stats.ts",
+      "defect": "an interval is computed from a single unit",
+      "status": "killed by nearby tests",
+      "detail": "test/stats.test.ts > ratioInterval: the delta method > refuses what it cannot compute"
+    },
+    {
+      "id": "R1",
+      "file": "src/readout.ts",
+      "defect": "a user in two arms is not noticed",
+      "status": "killed by nearby tests",
+      "detail": "test/readout.test.ts > ReadoutAccumulator: what it refuses to pass > excludes a user who appears in two arms and says so"
+    },
+    {
+      "id": "R2",
+      "file": "src/readout.ts",
+      "defect": "the sample ratio verdict is inverted",
+      "status": "killed by nearby tests",
+      "detail": "test/readout.test.ts > ReadoutAccumulator: hand-computed data > has no findings and counts users and rows"
+    },
+    {
+      "id": "R3",
+      "file": "src/readout.ts",
+      "defect": "an arm with one user gets an interval",
+      "status": "killed by nearby tests",
+      "detail": "test/readout.test.ts > ReadoutAccumulator: what it refuses to pass > fails an arm with fewer than two users and gives no interval for it"
+    },
+    {
+      "id": "R4",
+      "file": "src/readout.ts",
+      "defect": "a row without x counts as zero requests",
+      "status": "killed by nearby tests",
+      "detail": "test/readout.test.ts > reading files > runs end to end on a JSONL file, with a default x of 1, blank lines and a byte order mark"
+    },
+    {
+      "id": "R5",
+      "file": "src/readout.ts",
+      "defect": "an interval that excludes zero is never reported as such",
+      "status": "killed by nearby tests",
+      "detail": "test/readout.test.ts > ReadoutAccumulator: does the interval exclude zero > says so for a clear increase, both ways of building the interval"
+    },
+    {
+      "id": "R6",
+      "file": "src/readout.ts",
+      "defect": "rows of an arm that is not in the plan are analysed",
+      "status": "killed by nearby tests",
+      "detail": "test/readout.test.ts > ReadoutAccumulator: what it refuses to pass > fails an arm that is not in the plan and does not analyse its rows"
+    },
+    {
+      "id": "R7",
+      "file": "src/readout.ts",
+      "defect": "the width ratio is upside down",
+      "status": "killed by nearby tests",
+      "detail": "test/readout.test.ts > ReadoutAccumulator: hand-computed data > compares each arm with the control the same two ways"
+    },
+    {
+      "id": "R8",
+      "file": "src/readout.ts",
+      "defect": "the request-level interval is built from user totals",
+      "status": "killed by nearby tests",
+      "detail": "test/readout.test.ts > ReadoutAccumulator: hand-computed data > has no findings and counts users and rows"
+    },
+    {
+      "id": "P1",
+      "file": "src/pii.ts",
+      "defect": "a phone shape is matched inside a longer digit run",
+      "status": "killed by nearby tests",
+      "detail": "test/pii.test.ts > detectPii: values that are not flagged > does not match the tail of a longer dashed or dotted number"
+    },
+    {
+      "id": "P2",
+      "file": "src/pii.ts",
+      "defect": "any text containing @ is called an email",
+      "status": "killed by nearby tests",
+      "detail": "test/pii.test.ts > detectPii: values that are not flagged > does not flag \"user@\""
+    },
+    {
+      "id": "C1",
+      "file": "src/cli.ts",
+      "defect": "lint-code exits 0 whatever it finds",
+      "status": "killed by nearby tests",
+      "detail": "test/cli.test.ts > eqg lint-code > fails the planted-fault sample with file:line:column findings"
+    },
+    {
+      "id": "C2",
+      "file": "src/cli.ts",
+      "defect": "running eqg with no command exits 0",
+      "status": "killed by nearby tests",
+      "detail": "test/cli.test.ts > eqg: help and version > exits 2 with usage when there is no command or an unknown one"
+    },
+    {
+      "id": "C3",
+      "file": "src/cli.ts",
+      "defect": "check-stream passes a stream with exactly one finding",
+      "status": "killed by nearby tests",
+      "detail": "test/cli.test.ts > eqg check-stream > fails an empty file, because nothing was checked"
+    },
+    {
+      "id": "C4",
+      "file": "src/cli.ts",
+      "defect": "validate-plan exits 0 for an invalid plan",
+      "status": "killed by nearby tests",
+      "detail": "test/cli.test.ts > eqg validate-plan > exits 1 and lists every problem for an invalid plan, and 2 when the file cannot be read"
+    }
+  ],
+  "meta": {
+    "commit": "ace752d0f819f5d2891d27f2fb6f5434070de7b1",
+    "dirty": false,
+    "node": "v22.17.0",
+    "os": "win32 10.0.26200",
+    "cpu": "13th Gen Intel(R) Core(TM) i7-13700HX",
+    "logicalCpus": 24,
+    "totalRamGb": 29.7,
+    "freeRamGbAtStart": 5.71,
+    "startedAt": "2026-11-03T02:46:15.300Z"
+  }
+}

@@ -239,6 +239,75 @@ Source: `results/fault-injection/fault-injection.json`, run at commit `0d46a76`.
 
 Source: `results/runtime/runtime.json`, run at commit `0d46a76`.
 
+### Mutation check
+
+56 of 56 injected defects were caught by the tests; 0 survived and 0 could not be applied. Each defect is put into a copy of the code, one at a time, and the tests are run against the copy: first the test files nearest the changed file, then the whole suite before a defect is called a survivor.
+
+<details><summary>All defects</summary>
+
+| id | file | defect | outcome |
+| --- | --- | --- | --- |
+| L1 | `src/lint-code.ts` | a backtick string with no substitution is no longer read as a literal event name | killed by nearby tests |
+| L2 | `src/lint-code.ts` | a value wrapped in `as` is no longer read through | killed by nearby tests |
+| L3 | `src/lint-code.ts` | required properties are reported missing even when a spread may supply them | killed by nearby tests |
+| L4 | `src/lint-code.ts` | a property set to undefined counts as present | killed by nearby tests |
+| L5 | `src/lint-code.ts` | the enum test is inverted | killed by nearby tests |
+| L6 | `src/lint-code.ts` | PII-shaped literals are reported even where the plan declares pii | killed by nearby tests |
+| L7 | `src/lint-code.ts` | event names are looked up with inherited keys (constructor, toString) | killed by nearby tests |
+| L8 | `src/lint-code.ts` | a non-literal event name is silently passed | killed by nearby tests |
+| L9 | `src/lint-code.ts` | a scan that found no tracker calls passes | killed by nearby tests |
+| L10 | `src/lint-code.ts` | syntax errors are not reported | killed by nearby tests |
+| L11 | `src/lint-code.ts` | this.analytics.track is never matched | killed by nearby tests |
+| L12 | `src/lint-code.ts` | literal type mismatches are not reported | killed by nearby tests |
+| A1 | `src/plan.ts` | maxDistinct of zero is accepted | killed by nearby tests |
+| A2 | `src/plan.ts` | inherited names count as declared events | killed by nearby tests |
+| A3 | `src/plan.ts` | a one-step funnel is accepted | killed by nearby tests |
+| A4 | `src/plan.ts` | duplicate enum values are accepted | killed by nearby tests |
+| A5 | `src/plan.ts` | a fractional number matches the integer type | killed by nearby tests |
+| S1 | `src/check-stream.ts` | an event exactly at the lateness tolerance is called late | killed by nearby tests |
+| S2 | `src/check-stream.ts` | a clock exactly at the skew tolerance is called skewed | killed by nearby tests |
+| S3 | `src/check-stream.ts` | equal funnel timestamps are called out of order | killed by nearby tests |
+| S4 | `src/check-stream.ts` | duplicate event ids are not found | killed by nearby tests |
+| S5 | `src/check-stream.ts` | the distinct-value bound is off by one | killed by nearby tests |
+| S6 | `src/check-stream.ts` | a stream with no events passes | killed by nearby tests |
+| S7 | `src/check-stream.ts` | PII-shaped values are reported even where the plan declares pii | killed by nearby tests |
+| S8 | `src/check-stream.ts` | a required property with a false or zero value counts as missing | killed by nearby tests |
+| S9 | `src/check-stream.ts` | an ISO timestamp without an offset is accepted | killed by nearby tests |
+| S10 | `src/check-stream.ts` | a byte order mark is not removed | killed by nearby tests |
+| S11 | `src/check-stream.ts` | a day is 86.4 seconds | killed by nearby tests |
+| S12 | `src/check-stream.ts` | the line length limit is not applied | killed by nearby tests |
+| S13 | `src/check-stream.ts` | events without received_at are not counted as unchecked | killed by nearby tests |
+| T1 | `src/stats.ts` | the covariance term of the delta method has the wrong sign | killed by nearby tests |
+| T2 | `src/stats.ts` | the ratio is not squared in the delta method | killed by nearby tests |
+| T3 | `src/stats.ts` | the delta method divides by the mean of the denominator, not its square | killed by nearby tests |
+| T4 | `src/stats.ts` | the variance of the denominator uses n instead of n - 1 | killed by nearby tests |
+| T5 | `src/stats.ts` | the chi-square test has one degree of freedom too many | killed by nearby tests |
+| T6 | `src/stats.ts` | the chi-square statistic is not divided by the expected count | killed by nearby tests |
+| T7 | `src/stats.ts` | the control arm adds no variance to the difference | killed by nearby tests |
+| T8 | `src/stats.ts` | the CUPED slope is halved | killed by nearby tests |
+| T9 | `src/stats.ts` | the upper tail of the normal quantile has the wrong sign | killed by nearby tests |
+| T10 | `src/stats.ts` | merging two sets of moments weighs them wrongly | killed by nearby tests |
+| T11 | `src/stats.ts` | the series branch of the incomplete gamma function returns the wrong tail | killed by nearby tests |
+| T12 | `src/stats.ts` | an interval is computed from a single unit | killed by nearby tests |
+| R1 | `src/readout.ts` | a user in two arms is not noticed | killed by nearby tests |
+| R2 | `src/readout.ts` | the sample ratio verdict is inverted | killed by nearby tests |
+| R3 | `src/readout.ts` | an arm with one user gets an interval | killed by nearby tests |
+| R4 | `src/readout.ts` | a row without x counts as zero requests | killed by nearby tests |
+| R5 | `src/readout.ts` | an interval that excludes zero is never reported as such | killed by nearby tests |
+| R6 | `src/readout.ts` | rows of an arm that is not in the plan are analysed | killed by nearby tests |
+| R7 | `src/readout.ts` | the width ratio is upside down | killed by nearby tests |
+| R8 | `src/readout.ts` | the request-level interval is built from user totals | killed by nearby tests |
+| P1 | `src/pii.ts` | a phone shape is matched inside a longer digit run | killed by nearby tests |
+| P2 | `src/pii.ts` | any text containing @ is called an email | killed by nearby tests |
+| C1 | `src/cli.ts` | lint-code exits 0 whatever it finds | killed by nearby tests |
+| C2 | `src/cli.ts` | running eqg with no command exits 0 | killed by nearby tests |
+| C3 | `src/cli.ts` | check-stream passes a stream with exactly one finding | killed by nearby tests |
+| C4 | `src/cli.ts` | validate-plan exits 0 for an invalid plan | killed by nearby tests |
+
+</details>
+
+Source: `results/mutation-check.json`, run at commit `ace752d`.
+
 <!-- results:end -->
 
 ### How to read these
