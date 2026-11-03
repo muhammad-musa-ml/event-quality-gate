@@ -1,0 +1,702 @@
+{
+  "description": "Coverage of the nominal 95% interval for a ratio metric with requests correlated within a user: request-level (naive) against user-level (delta method). Synthetic data only.",
+  "command": "node dist/scripts/simulate-coverage.js",
+  "level": 0.95,
+  "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110
+  ],
+  "trialsPerSeed": 2000,
+  "trialsPerSetting": 20000,
+  "monteCarloSePerSeed": 0.004873397172404485,
+  "generator": "user success probability ~ Beta(mean p0, intra-class correlation icc); requests per user = 1 + Poisson(meanRequests - 1), or 1 + Poisson(heavy * p_u) in the heavy setting; each request succeeds with probability p_u",
+  "settings": [
+    {
+      "id": "independent",
+      "label": "requests independent (icc 0)",
+      "users": 200,
+      "model": {
+        "p0": 0.2,
+        "icc": 0,
+        "meanRequests": 10
+      },
+      "trueRatio": 0.2,
+      "perSeed": [
+        {
+          "seed": 101,
+          "trials": 2000,
+          "naiveCoverage": 0.9475,
+          "clusteredCoverage": 0.946,
+          "naiveMeanWidth": 0.035073631926444276,
+          "clusteredMeanWidth": 0.03502112524755155
+        },
+        {
+          "seed": 102,
+          "trials": 2000,
+          "naiveCoverage": 0.9495,
+          "clusteredCoverage": 0.952,
+          "naiveMeanWidth": 0.035080103023574984,
+          "clusteredMeanWidth": 0.03506120667015092
+        },
+        {
+          "seed": 103,
+          "trials": 2000,
+          "naiveCoverage": 0.945,
+          "clusteredCoverage": 0.948,
+          "naiveMeanWidth": 0.03505200439538035,
+          "clusteredMeanWidth": 0.03505521309251182
+        },
+        {
+          "seed": 104,
+          "trials": 2000,
+          "naiveCoverage": 0.951,
+          "clusteredCoverage": 0.9475,
+          "naiveMeanWidth": 0.035074503737142,
+          "clusteredMeanWidth": 0.035030582916646555
+        },
+        {
+          "seed": 105,
+          "trials": 2000,
+          "naiveCoverage": 0.959,
+          "clusteredCoverage": 0.9595,
+          "naiveMeanWidth": 0.03506782987718834,
+          "clusteredMeanWidth": 0.03505131400677513
+        },
+        {
+          "seed": 106,
+          "trials": 2000,
+          "naiveCoverage": 0.95,
+          "clusteredCoverage": 0.9505,
+          "naiveMeanWidth": 0.0350999002257075,
+          "clusteredMeanWidth": 0.03503976307768153
+        },
+        {
+          "seed": 107,
+          "trials": 2000,
+          "naiveCoverage": 0.944,
+          "clusteredCoverage": 0.9455,
+          "naiveMeanWidth": 0.03507366195796437,
+          "clusteredMeanWidth": 0.035039053995067924
+        },
+        {
+          "seed": 108,
+          "trials": 2000,
+          "naiveCoverage": 0.9515,
+          "clusteredCoverage": 0.948,
+          "naiveMeanWidth": 0.035081699603284805,
+          "clusteredMeanWidth": 0.03503724571716402
+        },
+        {
+          "seed": 109,
+          "trials": 2000,
+          "naiveCoverage": 0.948,
+          "clusteredCoverage": 0.948,
+          "naiveMeanWidth": 0.0350728473840458,
+          "clusteredMeanWidth": 0.03498678141625409
+        },
+        {
+          "seed": 110,
+          "trials": 2000,
+          "naiveCoverage": 0.952,
+          "clusteredCoverage": 0.949,
+          "naiveMeanWidth": 0.035069679967400694,
+          "clusteredMeanWidth": 0.03499138881951161
+        }
+      ],
+      "summary": {
+        "naive": {
+          "mean": 0.9497500000000001,
+          "sd": 0.00420482527051429,
+          "min": 0.944,
+          "max": 0.959,
+          "median": 0.94975
+        },
+        "clustered": {
+          "mean": 0.9494,
+          "sd": 0.004033195589934458,
+          "min": 0.9455,
+          "max": 0.9595,
+          "median": 0.948
+        },
+        "naiveMeanWidth": 0.03507458620981331,
+        "clusteredMeanWidth": 0.03503136749593152
+      }
+    },
+    {
+      "id": "icc-0.05",
+      "label": "icc 0.05",
+      "users": 200,
+      "model": {
+        "p0": 0.2,
+        "icc": 0.05,
+        "meanRequests": 10
+      },
+      "trueRatio": 0.2,
+      "perSeed": [
+        {
+          "seed": 101,
+          "trials": 2000,
+          "naiveCoverage": 0.887,
+          "clusteredCoverage": 0.946,
+          "naiveMeanWidth": 0.03506545561274879,
+          "clusteredMeanWidth": 0.04274888640496754
+        },
+        {
+          "seed": 102,
+          "trials": 2000,
+          "naiveCoverage": 0.8975,
+          "clusteredCoverage": 0.955,
+          "naiveMeanWidth": 0.03508778801798724,
+          "clusteredMeanWidth": 0.04287212299923458
+        },
+        {
+          "seed": 103,
+          "trials": 2000,
+          "naiveCoverage": 0.8815,
+          "clusteredCoverage": 0.9435,
+          "naiveMeanWidth": 0.03509330452978744,
+          "clusteredMeanWidth": 0.04284036706894949
+        },
+        {
+          "seed": 104,
+          "trials": 2000,
+          "naiveCoverage": 0.9025,
+          "clusteredCoverage": 0.957,
+          "naiveMeanWidth": 0.035068253872003026,
+          "clusteredMeanWidth": 0.04270678786830602
+        },
+        {
+          "seed": 105,
+          "trials": 2000,
+          "naiveCoverage": 0.8915,
+          "clusteredCoverage": 0.949,
+          "naiveMeanWidth": 0.03507427509830194,
+          "clusteredMeanWidth": 0.04281377842237064
+        },
+        {
+          "seed": 106,
+          "trials": 2000,
+          "naiveCoverage": 0.898,
+          "clusteredCoverage": 0.949,
+          "naiveMeanWidth": 0.035053804021503154,
+          "clusteredMeanWidth": 0.04278731556529161
+        },
+        {
+          "seed": 107,
+          "trials": 2000,
+          "naiveCoverage": 0.894,
+          "clusteredCoverage": 0.9485,
+          "naiveMeanWidth": 0.03504587157516668,
+          "clusteredMeanWidth": 0.04279828733533931
+        },
+        {
+          "seed": 108,
+          "trials": 2000,
+          "naiveCoverage": 0.8955,
+          "clusteredCoverage": 0.955,
+          "naiveMeanWidth": 0.03510137866666387,
+          "clusteredMeanWidth": 0.042932799975145576
+        },
+        {
+          "seed": 109,
+          "trials": 2000,
+          "naiveCoverage": 0.889,
+          "clusteredCoverage": 0.946,
+          "naiveMeanWidth": 0.03505913976925713,
+          "clusteredMeanWidth": 0.04294213828350872
+        },
+        {
+          "seed": 110,
+          "trials": 2000,
+          "naiveCoverage": 0.8955,
+          "clusteredCoverage": 0.9505,
+          "naiveMeanWidth": 0.035059226324885194,
+          "clusteredMeanWidth": 0.04282152285973652
+        }
+      ],
+      "summary": {
+        "naive": {
+          "mean": 0.8932,
+          "sd": 0.006101912268570677,
+          "min": 0.8815,
+          "max": 0.9025,
+          "median": 0.8947499999999999
+        },
+        "clustered": {
+          "mean": 0.94995,
+          "sd": 0.0044437846732511875,
+          "min": 0.9435,
+          "max": 0.957,
+          "median": 0.949
+        },
+        "naiveMeanWidth": 0.03507084974883044,
+        "clusteredMeanWidth": 0.042826400678285
+      }
+    },
+    {
+      "id": "icc-0.2",
+      "label": "icc 0.2",
+      "users": 200,
+      "model": {
+        "p0": 0.2,
+        "icc": 0.2,
+        "meanRequests": 10
+      },
+      "trueRatio": 0.2,
+      "perSeed": [
+        {
+          "seed": 101,
+          "trials": 2000,
+          "naiveCoverage": 0.7385,
+          "clusteredCoverage": 0.9455,
+          "naiveMeanWidth": 0.035020658949685236,
+          "clusteredMeanWidth": 0.060333963355382735
+        },
+        {
+          "seed": 102,
+          "trials": 2000,
+          "naiveCoverage": 0.7445,
+          "clusteredCoverage": 0.947,
+          "naiveMeanWidth": 0.03498895366690685,
+          "clusteredMeanWidth": 0.060202558846718615
+        },
+        {
+          "seed": 103,
+          "trials": 2000,
+          "naiveCoverage": 0.7515,
+          "clusteredCoverage": 0.947,
+          "naiveMeanWidth": 0.03506833361538005,
+          "clusteredMeanWidth": 0.060434757463839806
+        },
+        {
+          "seed": 104,
+          "trials": 2000,
+          "naiveCoverage": 0.734,
+          "clusteredCoverage": 0.9395,
+          "naiveMeanWidth": 0.035030566041583916,
+          "clusteredMeanWidth": 0.06028186787975323
+        },
+        {
+          "seed": 105,
+          "trials": 2000,
+          "naiveCoverage": 0.7395,
+          "clusteredCoverage": 0.949,
+          "naiveMeanWidth": 0.03507809348675663,
+          "clusteredMeanWidth": 0.06049008368806521
+        },
+        {
+          "seed": 106,
+          "trials": 2000,
+          "naiveCoverage": 0.746,
+          "clusteredCoverage": 0.9525,
+          "naiveMeanWidth": 0.03502308595893183,
+          "clusteredMeanWidth": 0.06030807539330037
+        },
+        {
+          "seed": 107,
+          "trials": 2000,
+          "naiveCoverage": 0.7445,
+          "clusteredCoverage": 0.9555,
+          "naiveMeanWidth": 0.035076116227640355,
+          "clusteredMeanWidth": 0.06044967318311918
+        },
+        {
+          "seed": 108,
+          "trials": 2000,
+          "naiveCoverage": 0.75,
+          "clusteredCoverage": 0.948,
+          "naiveMeanWidth": 0.035026583794541565,
+          "clusteredMeanWidth": 0.06030527901421998
+        },
+        {
+          "seed": 109,
+          "trials": 2000,
+          "naiveCoverage": 0.743,
+          "clusteredCoverage": 0.949,
+          "naiveMeanWidth": 0.03502171097120325,
+          "clusteredMeanWidth": 0.06040639668735574
+        },
+        {
+          "seed": 110,
+          "trials": 2000,
+          "naiveCoverage": 0.742,
+          "clusteredCoverage": 0.946,
+          "naiveMeanWidth": 0.03502982302343178,
+          "clusteredMeanWidth": 0.060315673016214315
+        }
+      ],
+      "summary": {
+        "naive": {
+          "mean": 0.7433500000000002,
+          "sd": 0.005249603159604848,
+          "min": 0.734,
+          "max": 0.7515,
+          "median": 0.74375
+        },
+        "clustered": {
+          "mean": 0.9479,
+          "sd": 0.004254409477236535,
+          "min": 0.9395,
+          "max": 0.9555,
+          "median": 0.9475
+        },
+        "naiveMeanWidth": 0.03503639257360615,
+        "clusteredMeanWidth": 0.06035283285279691
+      }
+    },
+    {
+      "id": "icc-0.5",
+      "label": "icc 0.5",
+      "users": 200,
+      "model": {
+        "p0": 0.2,
+        "icc": 0.5,
+        "meanRequests": 10
+      },
+      "trueRatio": 0.2,
+      "perSeed": [
+        {
+          "seed": 101,
+          "trials": 2000,
+          "naiveCoverage": 0.561,
+          "clusteredCoverage": 0.936,
+          "naiveMeanWidth": 0.03495363194776348,
+          "clusteredMeanWidth": 0.08511026908098775
+        },
+        {
+          "seed": 102,
+          "trials": 2000,
+          "naiveCoverage": 0.589,
+          "clusteredCoverage": 0.9515,
+          "naiveMeanWidth": 0.035026170315968705,
+          "clusteredMeanWidth": 0.08531740423130003
+        },
+        {
+          "seed": 103,
+          "trials": 2000,
+          "naiveCoverage": 0.5555,
+          "clusteredCoverage": 0.945,
+          "naiveMeanWidth": 0.03498568164636728,
+          "clusteredMeanWidth": 0.08519255931840312
+        },
+        {
+          "seed": 104,
+          "trials": 2000,
+          "naiveCoverage": 0.585,
+          "clusteredCoverage": 0.942,
+          "naiveMeanWidth": 0.03499182477576103,
+          "clusteredMeanWidth": 0.08536883081372125
+        },
+        {
+          "seed": 105,
+          "trials": 2000,
+          "naiveCoverage": 0.569,
+          "clusteredCoverage": 0.9445,
+          "naiveMeanWidth": 0.03498666769295197,
+          "clusteredMeanWidth": 0.08529162734137127
+        },
+        {
+          "seed": 106,
+          "trials": 2000,
+          "naiveCoverage": 0.562,
+          "clusteredCoverage": 0.942,
+          "naiveMeanWidth": 0.03495847324360979,
+          "clusteredMeanWidth": 0.0852546399973314
+        },
+        {
+          "seed": 107,
+          "trials": 2000,
+          "naiveCoverage": 0.602,
+          "clusteredCoverage": 0.9525,
+          "naiveMeanWidth": 0.034953576375936594,
+          "clusteredMeanWidth": 0.08504911211460527
+        },
+        {
+          "seed": 108,
+          "trials": 2000,
+          "naiveCoverage": 0.5885,
+          "clusteredCoverage": 0.941,
+          "naiveMeanWidth": 0.03497744141545055,
+          "clusteredMeanWidth": 0.08507326766547176
+        },
+        {
+          "seed": 109,
+          "trials": 2000,
+          "naiveCoverage": 0.575,
+          "clusteredCoverage": 0.94,
+          "naiveMeanWidth": 0.03496139181077034,
+          "clusteredMeanWidth": 0.08516726371952879
+        },
+        {
+          "seed": 110,
+          "trials": 2000,
+          "naiveCoverage": 0.59,
+          "clusteredCoverage": 0.943,
+          "naiveMeanWidth": 0.03500045183049732,
+          "clusteredMeanWidth": 0.08536423434138493
+        }
+      ],
+      "summary": {
+        "naive": {
+          "mean": 0.5777,
+          "sd": 0.015422206211967337,
+          "min": 0.5555,
+          "max": 0.602,
+          "median": 0.58
+        },
+        "clustered": {
+          "mean": 0.9437499999999999,
+          "sd": 0.0050235556243671846,
+          "min": 0.936,
+          "max": 0.9525,
+          "median": 0.9424999999999999
+        },
+        "naiveMeanWidth": 0.03497953110550771,
+        "clusteredMeanWidth": 0.08521892086241056
+      }
+    },
+    {
+      "id": "icc-0.2-small",
+      "label": "icc 0.2, 50 users",
+      "users": 50,
+      "model": {
+        "p0": 0.2,
+        "icc": 0.2,
+        "meanRequests": 10
+      },
+      "trueRatio": 0.2,
+      "perSeed": [
+        {
+          "seed": 101,
+          "trials": 2000,
+          "naiveCoverage": 0.719,
+          "clusteredCoverage": 0.927,
+          "naiveMeanWidth": 0.06994983610506414,
+          "clusteredMeanWidth": 0.11963642431951184
+        },
+        {
+          "seed": 102,
+          "trials": 2000,
+          "naiveCoverage": 0.7355,
+          "clusteredCoverage": 0.931,
+          "naiveMeanWidth": 0.06978410822253335,
+          "clusteredMeanWidth": 0.11952776673299316
+        },
+        {
+          "seed": 103,
+          "trials": 2000,
+          "naiveCoverage": 0.7275,
+          "clusteredCoverage": 0.9255,
+          "naiveMeanWidth": 0.06974704811225879,
+          "clusteredMeanWidth": 0.11897638164037135
+        },
+        {
+          "seed": 104,
+          "trials": 2000,
+          "naiveCoverage": 0.7295,
+          "clusteredCoverage": 0.9335,
+          "naiveMeanWidth": 0.06993094528936336,
+          "clusteredMeanWidth": 0.12021873115957822
+        },
+        {
+          "seed": 105,
+          "trials": 2000,
+          "naiveCoverage": 0.7305,
+          "clusteredCoverage": 0.9305,
+          "naiveMeanWidth": 0.06967472419582024,
+          "clusteredMeanWidth": 0.11877019331610066
+        },
+        {
+          "seed": 106,
+          "trials": 2000,
+          "naiveCoverage": 0.7605,
+          "clusteredCoverage": 0.9405,
+          "naiveMeanWidth": 0.06995913699577275,
+          "clusteredMeanWidth": 0.12001654475994812
+        },
+        {
+          "seed": 107,
+          "trials": 2000,
+          "naiveCoverage": 0.736,
+          "clusteredCoverage": 0.927,
+          "naiveMeanWidth": 0.06979839698829847,
+          "clusteredMeanWidth": 0.119920066784943
+        },
+        {
+          "seed": 108,
+          "trials": 2000,
+          "naiveCoverage": 0.733,
+          "clusteredCoverage": 0.928,
+          "naiveMeanWidth": 0.06989582541582923,
+          "clusteredMeanWidth": 0.11981954696368309
+        },
+        {
+          "seed": 109,
+          "trials": 2000,
+          "naiveCoverage": 0.743,
+          "clusteredCoverage": 0.939,
+          "naiveMeanWidth": 0.06989323650013808,
+          "clusteredMeanWidth": 0.11962585837076745
+        },
+        {
+          "seed": 110,
+          "trials": 2000,
+          "naiveCoverage": 0.7405,
+          "clusteredCoverage": 0.935,
+          "naiveMeanWidth": 0.06979208733180912,
+          "clusteredMeanWidth": 0.11957088423535217
+        }
+      ],
+      "summary": {
+        "naive": {
+          "mean": 0.7354999999999999,
+          "sd": 0.011105554165971776,
+          "min": 0.719,
+          "max": 0.7605,
+          "median": 0.7342500000000001
+        },
+        "clustered": {
+          "mean": 0.9317,
+          "sd": 0.005197221479897787,
+          "min": 0.9255,
+          "max": 0.9405,
+          "median": 0.93075
+        },
+        "naiveMeanWidth": 0.06984253451568875,
+        "clusteredMeanWidth": 0.11960823982832494
+      }
+    },
+    {
+      "id": "icc-0.2-heavy",
+      "label": "icc 0.2, heavy users succeed more",
+      "users": 200,
+      "model": {
+        "p0": 0.2,
+        "icc": 0.2,
+        "meanRequests": 0,
+        "heavy": 45
+      },
+      "trueRatio": 0.34400000000000003,
+      "perSeed": [
+        {
+          "seed": 101,
+          "trials": 2000,
+          "naiveCoverage": 0.6555,
+          "clusteredCoverage": 0.9435,
+          "naiveMeanWidth": 0.04163745399514977,
+          "clusteredMeanWidth": 0.08835477332990027
+        },
+        {
+          "seed": 102,
+          "trials": 2000,
+          "naiveCoverage": 0.6475,
+          "clusteredCoverage": 0.9365,
+          "naiveMeanWidth": 0.041614522838751666,
+          "clusteredMeanWidth": 0.08798784838902493
+        },
+        {
+          "seed": 103,
+          "trials": 2000,
+          "naiveCoverage": 0.6515,
+          "clusteredCoverage": 0.936,
+          "naiveMeanWidth": 0.04163884583519089,
+          "clusteredMeanWidth": 0.08798137244643886
+        },
+        {
+          "seed": 104,
+          "trials": 2000,
+          "naiveCoverage": 0.6475,
+          "clusteredCoverage": 0.943,
+          "naiveMeanWidth": 0.0416149741909334,
+          "clusteredMeanWidth": 0.0880409790557611
+        },
+        {
+          "seed": 105,
+          "trials": 2000,
+          "naiveCoverage": 0.63,
+          "clusteredCoverage": 0.941,
+          "naiveMeanWidth": 0.04163767105041301,
+          "clusteredMeanWidth": 0.08830614456990785
+        },
+        {
+          "seed": 106,
+          "trials": 2000,
+          "naiveCoverage": 0.648,
+          "clusteredCoverage": 0.9455,
+          "naiveMeanWidth": 0.04162635412030253,
+          "clusteredMeanWidth": 0.0882022858198664
+        },
+        {
+          "seed": 107,
+          "trials": 2000,
+          "naiveCoverage": 0.6335,
+          "clusteredCoverage": 0.946,
+          "naiveMeanWidth": 0.041607006104686296,
+          "clusteredMeanWidth": 0.08783981808662035
+        },
+        {
+          "seed": 108,
+          "trials": 2000,
+          "naiveCoverage": 0.6365,
+          "clusteredCoverage": 0.9445,
+          "naiveMeanWidth": 0.04159416398904842,
+          "clusteredMeanWidth": 0.08804602638050343
+        },
+        {
+          "seed": 109,
+          "trials": 2000,
+          "naiveCoverage": 0.6285,
+          "clusteredCoverage": 0.9375,
+          "naiveMeanWidth": 0.04160160477120405,
+          "clusteredMeanWidth": 0.08795867392898434
+        },
+        {
+          "seed": 110,
+          "trials": 2000,
+          "naiveCoverage": 0.627,
+          "clusteredCoverage": 0.9495,
+          "naiveMeanWidth": 0.041622136881954076,
+          "clusteredMeanWidth": 0.08812080007815823
+        }
+      ],
+      "summary": {
+        "naive": {
+          "mean": 0.64055,
+          "sd": 0.010550013164815377,
+          "min": 0.627,
+          "max": 0.6555,
+          "median": 0.6419999999999999
+        },
+        "clustered": {
+          "mean": 0.9423,
+          "sd": 0.004479583313955282,
+          "min": 0.936,
+          "max": 0.9495,
+          "median": 0.9432499999999999
+        },
+        "naiveMeanWidth": 0.041619473377763415,
+        "clusteredMeanWidth": 0.08808387220851657
+      }
+    }
+  ],
+  "meta": {
+    "commit": "04e54b6976496b9da73aa81497a61de4f5af5eb0",
+    "dirty": false,
+    "node": "v22.17.0",
+    "os": "win32 10.0.26200",
+    "cpu": "13th Gen Intel(R) Core(TM) i7-13700HX",
+    "logicalCpus": 24,
+    "totalRamGb": 29.7,
+    "freeRamGbAtStart": 1.09,
+    "startedAt": "2026-11-03T02:31:21.788Z"
+  },
+  "elapsedSeconds": 21.5
+}
