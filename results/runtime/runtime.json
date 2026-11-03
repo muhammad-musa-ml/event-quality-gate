@@ -1,0 +1,98 @@
+{
+  "description": "Runtime of eqg check-stream on 1,000,000 synthetic events. Each run is a fresh node process. Wall time includes starting node and loading the program; check time is measured inside the process around reading and checking the file.",
+  "command": "node dist/scripts/bench-runtime.js",
+  "events": 1000000,
+  "users": 180355,
+  "fileBytes": 196164494,
+  "generator": "scripts/synthetic.ts userEvents (seed 7), events spread over 64 random buckets then joined",
+  "plan": "examples/tracking-plan.json",
+  "runs": [
+    {
+      "run": 1,
+      "wallMs": 8065,
+      "checkMs": 7332,
+      "peakRssMb": 293,
+      "eventsPerSecond": 136388,
+      "findings": 0,
+      "freeRamGbBefore": 2.46
+    },
+    {
+      "run": 2,
+      "wallMs": 8028,
+      "checkMs": 7364,
+      "peakRssMb": 294,
+      "eventsPerSecond": 135796,
+      "findings": 0,
+      "freeRamGbBefore": 2.63
+    },
+    {
+      "run": 3,
+      "wallMs": 8161,
+      "checkMs": 7501,
+      "peakRssMb": 295,
+      "eventsPerSecond": 133316,
+      "findings": 0,
+      "freeRamGbBefore": 2.54
+    },
+    {
+      "run": 4,
+      "wallMs": 8428,
+      "checkMs": 7789,
+      "peakRssMb": 296,
+      "eventsPerSecond": 128386,
+      "findings": 0,
+      "freeRamGbBefore": 2.27
+    },
+    {
+      "run": 5,
+      "wallMs": 8778,
+      "checkMs": 8090,
+      "peakRssMb": 296,
+      "eventsPerSecond": 123609,
+      "findings": 0,
+      "freeRamGbBefore": 2.21
+    }
+  ],
+  "summary": {
+    "wallMs": {
+      "mean": 8292,
+      "sd": 313.4796644122231,
+      "min": 8028,
+      "max": 8778,
+      "median": 8161
+    },
+    "checkMs": {
+      "mean": 7615.2,
+      "sd": 320.930989466583,
+      "min": 7332,
+      "max": 8090,
+      "median": 7501
+    },
+    "peakRssMb": {
+      "mean": 294.8,
+      "sd": 1.3038404810405297,
+      "min": 293,
+      "max": 296,
+      "median": 295
+    },
+    "eventsPerSecond": {
+      "mean": 131499,
+      "sd": 5422.427685087188,
+      "min": 123609,
+      "max": 136388,
+      "median": 133316
+    }
+  },
+  "conditions": "One laptop. Other programs were running during the runs; free RAM before each run is listed per run. No effort was made to quiet the machine.",
+  "meta": {
+    "commit": "0d46a761740276e0c088c9728447601331bd86ba",
+    "dirty": false,
+    "node": "v22.17.0",
+    "os": "win32 10.0.26200",
+    "cpu": "13th Gen Intel(R) Core(TM) i7-13700HX",
+    "logicalCpus": 24,
+    "totalRamGb": 29.7,
+    "freeRamGbAtStart": 3.03,
+    "startedAt": "2026-11-03T02:37:22.136Z"
+  }
+}

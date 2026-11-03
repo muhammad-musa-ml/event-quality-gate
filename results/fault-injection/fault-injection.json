@@ -1,0 +1,2733 @@
+{
+  "description": "Detection rate per fault family. Faults are injected into a clean synthetic stream and a clean synthetic code corpus; a fault counts as detected when the tool reports the expected finding at the injected place.",
+  "command": "node dist/scripts/fault-injection.js",
+  "seeds": [
+    201,
+    202,
+    203,
+    204,
+    205
+  ],
+  "faultsPerFamilyPerSeed": 200,
+  "stream": {
+    "usersPerStream": 3000,
+    "generator": "scripts/synthetic.ts, generateCleanStream, for examples/tracking-plan.json",
+    "cleanBaseline": [
+      {
+        "seed": 201,
+        "events": 16687,
+        "findings": 0
+      },
+      {
+        "seed": 202,
+        "events": 16641,
+        "findings": 0
+      },
+      {
+        "seed": 203,
+        "events": 16743,
+        "findings": 0
+      },
+      {
+        "seed": 204,
+        "events": 16471,
+        "findings": 0
+      },
+      {
+        "seed": 205,
+        "events": 16640,
+        "findings": 0
+      }
+    ],
+    "families": [
+      {
+        "id": "unknown-event",
+        "description": "event name misspelled (last character dropped)",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "missing-required-property",
+        "description": "a required property removed",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "unexpected-property",
+        "description": "a property that is not in the plan added",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "type-integer-as-string",
+        "description": "an integer property sent as a string",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "type-fractional-integer",
+        "description": "an integer property sent with a fraction",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "type-boolean-as-string",
+        "description": "a boolean property sent as the string \"true\" or \"false\"",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "enum-unlisted-value",
+        "description": "an enum property set to a value that is not listed",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "enum-case-changed",
+        "description": "an enum value with its first letter capitalised",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "enum-wrong-but-valid-value",
+        "description": "an enum property swapped for a different listed value",
+        "expectation": "missed by design",
+        "note": "Both values are allowed by the plan, so a plan cannot call either wrong.",
+        "injected": 1000,
+        "detected": 0,
+        "stray": 0,
+        "rate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "duplicate-delivery",
+        "description": "an event delivered twice with the same event_id",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "duplicate-with-new-id",
+        "description": "an event retried with a new event_id and everything else the same",
+        "expectation": "missed by design",
+        "note": "Only the event_id is compared; the same content under a new id is a different event as far as the tool can tell.",
+        "injected": 1000,
+        "detected": 0,
+        "stray": 0,
+        "rate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "funnel-reordered",
+        "description": "a user's first workspace_created moved before their signup_completed",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "funnel-step-lost",
+        "description": "a user's signup_completed event removed, leaving later steps",
+        "expectation": "missed by design",
+        "note": "A stream can start in the middle of a funnel, so a missing earlier step is not reported; only steps seen out of order are.",
+        "injected": 1000,
+        "detected": 0,
+        "stray": 0,
+        "rate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "late-arrival",
+        "description": "received_at later than the 15 minute tolerance (16 minutes to 6 hours)",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "clock-ahead",
+        "description": "a timestamp later than receive time by more than the 5 minute tolerance (6 minutes to 2 hours)",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "pii-email",
+        "description": "an email address in an undeclared string property",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "pii-phone-parentheses",
+        "description": "a phone number written (555) 010-0xxx",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "pii-phone-dashes",
+        "description": "a phone number written 555-010-0xxx",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "pii-phone-international",
+        "description": "a phone number written +44 20 7946 0xxx",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "pii-phone-digits-only",
+        "description": "a phone number as ten bare digits",
+        "expectation": "missed by design",
+        "note": "Ten bare digits look like any numeric id, so the detector does not match them.",
+        "injected": 1000,
+        "detected": 0,
+        "stray": 0,
+        "rate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "pii-email-spelled-out",
+        "description": "an email address written \"name dot x at example dot com\"",
+        "expectation": "missed by design",
+        "note": "Only the usual local-part@domain shape is matched.",
+        "injected": 1000,
+        "detected": 0,
+        "stray": 0,
+        "rate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "pii-person-name",
+        "description": "a person's name",
+        "expectation": "missed by design",
+        "note": "A name has no fixed shape; the detector matches shapes, not meaning.",
+        "injected": 1000,
+        "detected": 0,
+        "stray": 0,
+        "rate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "pii-street-address",
+        "description": "a street address",
+        "expectation": "missed by design",
+        "note": "Same reason as names: no fixed shape.",
+        "injected": 1000,
+        "detected": 0,
+        "stray": 0,
+        "rate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "truncated-line",
+        "description": "a line cut off in the middle (invalid JSON)",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "missing-user-id",
+        "description": "user_id missing from the envelope",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "timestamp-not-iso",
+        "description": "ts written \"2026-11-02 10:00:00\" (no T, no offset)",
+        "expectation": "detected",
+        "note": "",
+        "injected": 1000,
+        "detected": 1000,
+        "stray": 0,
+        "rate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "detected": 200,
+            "stray": 0
+          }
+        ]
+      }
+    ],
+    "highCardinality": {
+      "description": "80 signup events in a 600-user stream given unique referrer values (plan bound 40); 50 streams per seed, each also run without the injection as a control",
+      "perSeed": [
+        {
+          "seed": 201,
+          "injected": 50,
+          "detected": 50,
+          "falsePositives": 0
+        },
+        {
+          "seed": 202,
+          "injected": 50,
+          "detected": 50,
+          "falsePositives": 0
+        },
+        {
+          "seed": 203,
+          "injected": 50,
+          "detected": 50,
+          "falsePositives": 0
+        },
+        {
+          "seed": 204,
+          "injected": 50,
+          "detected": 50,
+          "falsePositives": 0
+        },
+        {
+          "seed": 205,
+          "injected": 50,
+          "detected": 50,
+          "falsePositives": 0
+        }
+      ]
+    }
+  },
+  "code": {
+    "generator": "scripts/code-corpus.ts, calls built from the example plan in several syntaxes (track, analytics.track, analytics?.track; three quote styles; single-line and multi-line; quoted keys; .ts, .tsx and .js files)",
+    "callsPerCorpus": 400,
+    "cleanBaseline": [
+      {
+        "seed": 201,
+        "calls": 2000,
+        "findings": 0
+      },
+      {
+        "seed": 202,
+        "calls": 2000,
+        "findings": 0
+      },
+      {
+        "seed": 203,
+        "calls": 2000,
+        "findings": 0
+      },
+      {
+        "seed": 204,
+        "calls": 2000,
+        "findings": 0
+      },
+      {
+        "seed": 205,
+        "calls": 2000,
+        "findings": 0
+      }
+    ],
+    "families": [
+      {
+        "id": "unknown-event",
+        "description": "event name misspelled (one character dropped)",
+        "expectation": "detected",
+        "note": "",
+        "idealFinding": "unknown-event",
+        "injected": 1000,
+        "exact": 1000,
+        "unverifiable": 0,
+        "missed": 0,
+        "stray": 0,
+        "exactRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "flaggedRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "missing-required-property",
+        "description": "a required property left out of an object literal",
+        "expectation": "detected",
+        "note": "",
+        "idealFinding": "missing-required-property",
+        "injected": 1000,
+        "exact": 1000,
+        "unverifiable": 0,
+        "missed": 0,
+        "stray": 0,
+        "exactRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "flaggedRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "unexpected-property",
+        "description": "a property that is not in the plan added",
+        "expectation": "detected",
+        "note": "",
+        "idealFinding": "unexpected-property",
+        "injected": 1000,
+        "exact": 1000,
+        "unverifiable": 0,
+        "missed": 0,
+        "stray": 0,
+        "exactRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "flaggedRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "type-integer-as-string",
+        "description": "an integer literal written as a string",
+        "expectation": "detected",
+        "note": "",
+        "idealFinding": "type-mismatch",
+        "injected": 1000,
+        "exact": 1000,
+        "unverifiable": 0,
+        "missed": 0,
+        "stray": 0,
+        "exactRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "flaggedRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "type-fractional-integer",
+        "description": "an integer literal written with a fraction",
+        "expectation": "detected",
+        "note": "",
+        "idealFinding": "type-mismatch",
+        "injected": 1000,
+        "exact": 1000,
+        "unverifiable": 0,
+        "missed": 0,
+        "stray": 0,
+        "exactRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "flaggedRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "type-boolean-as-string",
+        "description": "a boolean literal written as a string",
+        "expectation": "detected",
+        "note": "",
+        "idealFinding": "type-mismatch",
+        "injected": 1000,
+        "exact": 1000,
+        "unverifiable": 0,
+        "missed": 0,
+        "stray": 0,
+        "exactRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "flaggedRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "enum-unlisted-value",
+        "description": "an enum property set to a value that is not listed",
+        "expectation": "detected",
+        "note": "",
+        "idealFinding": "enum-violation",
+        "injected": 1000,
+        "exact": 1000,
+        "unverifiable": 0,
+        "missed": 0,
+        "stray": 0,
+        "exactRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "flaggedRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "enum-case-changed",
+        "description": "an enum value with its first letter capitalised",
+        "expectation": "detected",
+        "note": "",
+        "idealFinding": "enum-violation",
+        "injected": 1000,
+        "exact": 1000,
+        "unverifiable": 0,
+        "missed": 0,
+        "stray": 0,
+        "exactRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "flaggedRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "enum-wrong-but-valid-value",
+        "description": "an enum property swapped for a different listed value",
+        "expectation": "missed by design",
+        "note": "Both values are allowed by the plan, so a plan cannot call either wrong.",
+        "idealFinding": "enum-violation",
+        "injected": 1000,
+        "exact": 0,
+        "unverifiable": 0,
+        "missed": 1000,
+        "stray": 0,
+        "exactRate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "flaggedRate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "pii-email-literal",
+        "description": "an email address literal in an undeclared string property",
+        "expectation": "detected",
+        "note": "",
+        "idealFinding": "pii-shaped-value",
+        "injected": 1000,
+        "exact": 1000,
+        "unverifiable": 0,
+        "missed": 0,
+        "stray": 0,
+        "exactRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "flaggedRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "pii-phone-literal",
+        "description": "a phone number literal (555) 010-0xxx",
+        "expectation": "detected",
+        "note": "",
+        "idealFinding": "pii-shaped-value",
+        "injected": 1000,
+        "exact": 1000,
+        "unverifiable": 0,
+        "missed": 0,
+        "stray": 0,
+        "exactRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "flaggedRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "pii-digits-only-literal",
+        "description": "a phone number literal as ten bare digits",
+        "expectation": "missed by design",
+        "note": "Ten bare digits look like any numeric id, so the detector does not match them.",
+        "idealFinding": "pii-shaped-value",
+        "injected": 1000,
+        "exact": 0,
+        "unverifiable": 0,
+        "missed": 1000,
+        "stray": 0,
+        "exactRate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "flaggedRate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "event-name-not-literal",
+        "description": "the event name passed in a variable",
+        "expectation": "detected",
+        "note": "Reported as non-literal-event-name: the tool says it cannot check the call, and the run fails.",
+        "idealFinding": "non-literal-event-name",
+        "injected": 1000,
+        "exact": 1000,
+        "unverifiable": 0,
+        "missed": 0,
+        "stray": 0,
+        "exactRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "flaggedRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 200,
+            "unverifiable": 0,
+            "missed": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "event-name-in-constant-with-typo",
+        "description": "a misspelled event name held in a const declared above the call",
+        "expectation": "flagged as unverifiable",
+        "note": "The tool reads only literals in the call, so it reports the call as unverifiable instead of naming the typo.",
+        "idealFinding": "unknown-event",
+        "injected": 1000,
+        "exact": 0,
+        "unverifiable": 1000,
+        "missed": 0,
+        "stray": 0,
+        "exactRate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "flaggedRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 200,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 200,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 200,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 200,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 200,
+            "missed": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "properties-in-variable",
+        "description": "a required property missing from an object passed by variable",
+        "expectation": "flagged as unverifiable",
+        "note": "The properties are not an object literal, so the tool says it cannot read them.",
+        "idealFinding": "missing-required-property",
+        "injected": 1000,
+        "exact": 0,
+        "unverifiable": 1000,
+        "missed": 0,
+        "stray": 0,
+        "exactRate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "flaggedRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 200,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 200,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 200,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 200,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 200,
+            "missed": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "spread-hides-missing-property",
+        "description": "a required property missing, with a spread in the object literal",
+        "expectation": "flagged as unverifiable",
+        "note": "A spread may or may not supply the property, so the tool reports it as unverifiable.",
+        "idealFinding": "missing-required-property",
+        "injected": 1000,
+        "exact": 0,
+        "unverifiable": 1000,
+        "missed": 0,
+        "stray": 0,
+        "exactRate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "flaggedRate": {
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1,
+          "median": 1
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 200,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 200,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 200,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 200,
+            "missed": 0,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 200,
+            "missed": 0,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "wrapper-function-typo",
+        "description": "a misspelled event name passed to a wrapper (logEvent) that is not a configured tracker",
+        "expectation": "missed by design",
+        "note": "Only the configured tracker names are matched, so a wrapper is never seen unless it is passed with --tracker.",
+        "idealFinding": "unknown-event",
+        "injected": 1000,
+        "exact": 0,
+        "unverifiable": 0,
+        "missed": 1000,
+        "stray": 0,
+        "exactRate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "flaggedRate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "aliased-tracker-typo",
+        "description": "a misspelled event name passed through const t = analytics.track",
+        "expectation": "missed by design",
+        "note": "An alias has a different name from any configured tracker.",
+        "idealFinding": "unknown-event",
+        "injected": 1000,
+        "exact": 0,
+        "unverifiable": 0,
+        "missed": 1000,
+        "stray": 0,
+        "exactRate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "flaggedRate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "element-access-typo",
+        "description": "a misspelled event name passed to analytics['track']",
+        "expectation": "missed by design",
+        "note": "Calls through bracket access are not matched.",
+        "idealFinding": "unknown-event",
+        "injected": 1000,
+        "exact": 0,
+        "unverifiable": 0,
+        "missed": 1000,
+        "stray": 0,
+        "exactRate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "flaggedRate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          }
+        ]
+      },
+      {
+        "id": "type-mismatch-in-non-literal-value",
+        "description": "an integer property given String(count)",
+        "expectation": "missed by design",
+        "note": "A value that is not a literal is not compared; the run reports how many such values it skipped.",
+        "idealFinding": "type-mismatch",
+        "injected": 1000,
+        "exact": 0,
+        "unverifiable": 0,
+        "missed": 1000,
+        "stray": 0,
+        "exactRate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "flaggedRate": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "perSeed": [
+          {
+            "seed": 201,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 202,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 203,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 204,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          },
+          {
+            "seed": 205,
+            "injected": 200,
+            "exact": 0,
+            "unverifiable": 0,
+            "missed": 200,
+            "stray": 0
+          }
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "commit": "0d46a761740276e0c088c9728447601331bd86ba",
+    "dirty": false,
+    "node": "v22.17.0",
+    "os": "win32 10.0.26200",
+    "cpu": "13th Gen Intel(R) Core(TM) i7-13700HX",
+    "logicalCpus": 24,
+    "totalRamGb": 29.7,
+    "freeRamGbAtStart": 3.33,
+    "startedAt": "2026-11-03T02:36:32.174Z"
+  },
+  "elapsedSeconds": 42
+}
