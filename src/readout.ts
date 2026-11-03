@@ -275,7 +275,7 @@ async function* jsonlObjects(path: string): AsyncGenerator<{ obj: Record<string,
   try {
     accessSync(path, constants.R_OK);
   } catch (e) {
-    throw new Error(`cannot read ${path}: ${(e as Error).message}`);
+    throw new Error(`cannot read ${path}: ${(e as Error).message}`, { cause: e });
   }
   const rl = createInterface({ input: createReadStream(path, { encoding: 'utf8' }), crlfDelay: Infinity });
   let line = 0;
@@ -288,7 +288,7 @@ async function* jsonlObjects(path: string): AsyncGenerator<{ obj: Record<string,
       try {
         parsed = JSON.parse(text);
       } catch (e) {
-        throw new Error(`${path}:${line}: not valid JSON: ${(e as Error).message}`);
+        throw new Error(`${path}:${line}: not valid JSON: ${(e as Error).message}`, { cause: e });
       }
       if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) {
         throw new Error(`${path}:${line}: expected a JSON object`);

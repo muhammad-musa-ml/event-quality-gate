@@ -97,6 +97,7 @@ describe('envelope problems', () => {
     ['an ISO ts without an offset', { ts: '2026-11-02T12:00:00' }],
     ['a numeric string ts', { ts: '1730000000000' }],
     ['a negative ts', { ts: -5 }],
+    ['a ts beyond the range of a Date', { ts: 9e15 }],
     ['an invalid received_at', { received_at: 'yesterday' }],
     ['properties that are an array', { properties: [] }],
     ['properties that are a string', { properties: 'x' }],
@@ -375,7 +376,8 @@ describe('checkStreamFile', () => {
 
   it('reads CRLF files, blank lines, a byte order mark and a last line with no newline, with true line numbers', async () => {
     const file = join(dir, 's.jsonl');
-    writeFileSync(file, `﻿${line()}\r\n\r\n${line({ name: 'nope' })}\r\n${line()}`);
+    const bom = String.fromCharCode(0xfeff);
+    writeFileSync(file, `${bom}${line()}\r\n\r\n${line({ name: 'nope' })}\r\n${line()}`);
     const r = await checkStreamFile(file, plan);
     expect(r.lines).toBe(4);
     expect(r.events).toBe(3);

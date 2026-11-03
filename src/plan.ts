@@ -228,13 +228,13 @@ export function loadPlan(path: string): TrackingPlan {
   try {
     text = readFileSync(path, 'utf8');
   } catch (e) {
-    throw new Error(`cannot read tracking plan ${path}: ${(e as Error).message}`);
+    throw new Error(`cannot read tracking plan ${path}: ${(e as Error).message}`, { cause: e });
   }
   let parsed: unknown;
   try {
     parsed = JSON.parse(text);
   } catch (e) {
-    throw new Error(`tracking plan ${path} is not valid JSON: ${(e as Error).message}`);
+    throw new Error(`tracking plan ${path} is not valid JSON: ${(e as Error).message}`, { cause: e });
   }
   try {
     return parsePlan(parsed);

@@ -50,6 +50,8 @@ export interface StreamReport {
 }
 
 const MAX_LINE_CHARS = 1_048_576;
+/** The largest time a JavaScript Date can hold. */
+const MAX_TIME_MS = 8.64e15;
 const ISO_8601 = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z|[+-]\d{2}:\d{2})$/;
 const DURATION = /^(\d+(?:\.\d+)?)(ms|s|m|h|d)?$/;
 const UNIT_MS: Record<string, number> = { ms: 1, s: 1000, m: 60_000, h: 3_600_000, d: 86_400_000 };
@@ -62,7 +64,7 @@ export function parseDuration(text: string): number {
 }
 
 function parseTime(v: unknown): number | null {
-  if (typeof v === 'number') return Number.isFinite(v) && v >= 0 ? v : null;
+  if (typeof v === 'number') return Number.isFinite(v) && v >= 0 && v <= MAX_TIME_MS ? v : null;
   if (typeof v === 'string' && ISO_8601.test(v)) {
     const t = Date.parse(v);
     return Number.isNaN(t) ? null : t;
@@ -114,8 +116,12 @@ export class StreamChecker {
   private add(type: FindingType, example: StreamExample): void {
     this.findingsTotal++;
     this.counts[type] = (this.counts[type] ?? 0) + 1;
-    const list = (this.examples[type] ??= []);
-    if (list.length < this.options.examplesPerType) list.push(example);
+    const list = this.examples[type];
+    if (list === undefined) {
+      if (this.options.examplesPerType > 0) this.examples[type] = [example];
+    } else if (list.length < this.options.examplesPerType) {
+      list.push(example);
+    }
   }
 
   addLine(raw: string): void {
@@ -276,7 +282,7 @@ export class StreamChecker {
               line: state.line[j]!,
               user,
               event: funnel[j]!,
-              message: `first "${funnel[j]}" (${tj}) is earlier than first "${funnel[i]}" (${ti}); the plan's funnel puts "${funnel[i]}" first`,
+              message: `first "${funnel[j]}" (${new Date(tj).toISOString()}) is earlier than first "${funnel[i]}" (${new Date(ti).toISOString()}); the plan's funnel puts "${funnel[i]}" first`,
             });
           }
         }
@@ -315,7 +321,7 @@ export async function checkStreamFile(path: string, plan: TrackingPlan, options:
     try {
       accessSync(path, constants.R_OK);
     } catch (e) {
-      throw new Error(`cannot read ${path}: ${(e as Error).message}`);
+      throw new Error(`cannot read ${path}: ${(e as Error).message}`, { cause: e });
     }
   }
   const input = path === '-' ? process.stdin : createReadStream(path, { encoding: 'utf8' });
@@ -324,7 +330,7 @@ export async function checkStreamFile(path: string, plan: TrackingPlan, options:
   try {
     for await (const line of rl) checker.addLine(line);
   } catch (e) {
-    throw new Error(`cannot read ${path}: ${(e as Error).message}`);
+    throw new Error(`cannot read ${path}: ${(e as Error).message}`, { cause: e });
   }
   return checker.finish();
 }

@@ -269,7 +269,7 @@ export function collectSourceFiles(paths: readonly string[]): string[] {
     try {
       stat = statSync(p);
     } catch (e) {
-      throw new Error(`cannot read ${p}: ${(e as Error).message}`);
+      throw new Error(`cannot read ${p}: ${(e as Error).message}`, { cause: e });
     }
     if (stat.isDirectory()) {
       walk(p, files);

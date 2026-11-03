@@ -60,13 +60,13 @@ describe('ReadoutAccumulator: hand-computed data', () => {
 
   it('gets the clustered and the request-level variances of each arm', () => {
     const [c, t] = r.arms;
-    expect(c!.clustered.ratio).toBeCloseTo(0.5, 12);
-    expect(c!.clustered.variance).toBeCloseTo(1 / 12, 12);
-    expect(c!.naive.variance).toBeCloseTo(1 / 28, 12);
-    expect(t!.clustered.variance).toBeCloseTo(1 / 216, 12);
-    expect(t!.naive.variance).toBeCloseTo(1 / 44, 12);
-    expect(c!.clustered.n).toBe(4);
-    expect(c!.naive.n).toBe(8);
+    expect(c!.clustered!.ratio).toBeCloseTo(0.5, 12);
+    expect(c!.clustered!.variance).toBeCloseTo(1 / 12, 12);
+    expect(c!.naive!.variance).toBeCloseTo(1 / 28, 12);
+    expect(t!.clustered!.variance).toBeCloseTo(1 / 216, 12);
+    expect(t!.naive!.variance).toBeCloseTo(1 / 44, 12);
+    expect(c!.clustered!.n).toBe(4);
+    expect(c!.naive!.n).toBe(8);
   });
 
   it('compares each arm with the control the same two ways', () => {
@@ -80,10 +80,10 @@ describe('ReadoutAccumulator: hand-computed data', () => {
   });
 
   it('passes the sample ratio test at 4 against 4', () => {
-    expect(r.srm.observed).toEqual([4, 4]);
-    expect(r.srm.chi2).toBeCloseTo(0, 12);
-    expect(r.srm.p).toBe(1);
-    expect(r.srm.passed).toBe(true);
+    expect(r.srm!.observed).toEqual([4, 4]);
+    expect(r.srm!.chi2).toBeCloseTo(0, 12);
+    expect(r.srm!.p).toBe(1);
+    expect(r.srm!.passed).toBe(true);
   });
 });
 
@@ -98,9 +98,9 @@ describe('ReadoutAccumulator: what it refuses to pass', () => {
     for (let i = 0; i < 600; i++) rows.push([`c${i}`, 'control', i % 2]);
     for (let i = 0; i < 400; i++) rows.push([`t${i}`, 'treatment', i % 2]);
     const r = report(rows);
-    expect(r.srm.chi2).toBeCloseTo(40, 10);
-    expect(r.srm.p).toBeLessThan(1e-9);
-    expect(r.srm.passed).toBe(false);
+    expect(r.srm!.chi2).toBeCloseTo(40, 10);
+    expect(r.srm!.p).toBeLessThan(1e-9);
+    expect(r.srm!.passed).toBe(false);
     expect(types(r)).toEqual(['sample-ratio-mismatch']);
     expect(r.findings[0]?.message).toContain('600');
     expect(r.findings[0]?.message).toContain('400');
@@ -132,7 +132,7 @@ describe('ReadoutAccumulator: what it refuses to pass', () => {
     expect(types(r)).toContain('user-in-multiple-arms');
     expect(r.usersInMultipleArms).toBe(1);
     expect(r.users).toBe(9);
-    expect(r.srm.observed).toEqual([4, 5]);
+    expect(r.srm!.observed).toEqual([4, 5]);
   });
 
   it('fails an arm that is not in the plan and does not analyse its rows', () => {
@@ -201,6 +201,7 @@ describe('ReadoutAccumulator: clustered against request-level intervals', () => 
     expect(cmp.clusteredExcludesZero).toBe(false);
     expect(cmp.naive.lower).toBeGreaterThan(0);
     expect(cmp.clustered.lower).toBeLessThan(0);
+    expect(cmp.clustered.upper).toBeGreaterThan(0);
     expect(cmp.intervalWidthRatio).toBeCloseTo(Math.sqrt(0.02579 / 0.002462), 1);
   });
 });
@@ -265,7 +266,8 @@ describe('reading files', () => {
     for (let i = 0; i < 6; i++) lines.push(JSON.stringify({ user_id: `c${i}`, arm: 'control', y: i % 2 }));
     lines.push('');
     for (let i = 0; i < 6; i++) lines.push(JSON.stringify({ user_id: `t${i}`, arm: 'treatment', y: 1, x: 1 }));
-    writeFileSync(file, `﻿${lines.join('\r\n')}\r\n`);
+    const bom = String.fromCharCode(0xfeff);
+    writeFileSync(file, `${bom}${lines.join('\r\n')}\r\n`);
     const r = await runReadout(file, base);
     expect(r.rows).toBe(12);
     expect(r.users).toBe(12);
