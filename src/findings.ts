@@ -16,7 +16,12 @@ export type FindingType =
   | 'late-event'
   | 'clock-skew'
   | 'high-cardinality'
-  | 'no-events';
+  | 'no-events'
+  | 'sample-ratio-mismatch'
+  | 'user-in-multiple-arms'
+  | 'unplanned-arm'
+  | 'too-few-users'
+  | 'zero-denominator';
 
 /** A finding of an "unverifiable" type means the tool could not decide; it still counts against the gate unless the caller allows it. */
 export const UNVERIFIABLE_TYPES: ReadonlySet<FindingType> = new Set<FindingType>([

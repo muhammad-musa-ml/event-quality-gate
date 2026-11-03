@@ -141,6 +141,30 @@ export class Moments2 {
     this.cXY += dx * (y - this.meanY);
   }
 
+  /** Adds everything `other` has seen, as if its pairs had been pushed here (Chan's parallel update). */
+  merge(other: Moments2): void {
+    if (other.n === 0) return;
+    if (this.n === 0) {
+      this.n = other.n;
+      this.meanX = other.meanX;
+      this.meanY = other.meanY;
+      this.m2X = other.m2X;
+      this.m2Y = other.m2Y;
+      this.cXY = other.cXY;
+      return;
+    }
+    const n = this.n + other.n;
+    const dx = other.meanX - this.meanX;
+    const dy = other.meanY - this.meanY;
+    const w = (this.n * other.n) / n;
+    this.m2X += other.m2X + dx * dx * w;
+    this.m2Y += other.m2Y + dy * dy * w;
+    this.cXY += other.cXY + dx * dy * w;
+    this.meanX += (dx * other.n) / n;
+    this.meanY += (dy * other.n) / n;
+    this.n = n;
+  }
+
   varX(): number {
     return this.m2X / (this.n - 1);
   }

@@ -165,6 +165,35 @@ describe('Moments2', () => {
   });
 });
 
+describe('Moments2.merge', () => {
+  it('equals pushing every pair into one accumulator', () => {
+    const y = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5];
+    const x = [2, 7, 1, 8, 2, 8, 1, 8, 2, 8, 4];
+    const whole = momentsOf(y, x);
+    const left = momentsOf(y.slice(0, 4), x.slice(0, 4));
+    const middle = momentsOf(y.slice(4, 5), x.slice(4, 5));
+    const right = momentsOf(y.slice(5), x.slice(5));
+    const merged = new Moments2();
+    merged.merge(new Moments2());
+    merged.merge(left);
+    merged.merge(middle);
+    merged.merge(right);
+    expect(merged.n).toBe(whole.n);
+    expect(merged.meanX).toBeCloseTo(whole.meanX, 12);
+    expect(merged.meanY).toBeCloseTo(whole.meanY, 12);
+    expect(merged.varX()).toBeCloseTo(whole.varX(), 10);
+    expect(merged.varY()).toBeCloseTo(whole.varY(), 10);
+    expect(merged.covXY()).toBeCloseTo(whole.covXY(), 10);
+  });
+
+  it('leaves the accumulator alone when the other one is empty', () => {
+    const m = momentsOf([1, 2, 3], [4, 5, 7]);
+    const before = [m.n, m.meanX, m.meanY, m.varX(), m.varY(), m.covXY()];
+    m.merge(new Moments2());
+    expect([m.n, m.meanX, m.meanY, m.varX(), m.varY(), m.covXY()]).toEqual(before);
+  });
+});
+
 describe('ratioInterval: the delta method', () => {
   const z = 1.9599639845400536;
 
