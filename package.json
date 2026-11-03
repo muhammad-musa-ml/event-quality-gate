@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "description": "CI gate for analytics instrumentation and experiment readouts: tracking-plan checks on source and event streams, sample ratio mismatch, user-clustered ratio-metric intervals, CUPED",
   "license": "MIT",
+  "author": "Muhammad Musa",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muhammad-musa-ml/event-quality-gate.git"
+  },
   "type": "module",
   "engines": {
     "node": ">=20"

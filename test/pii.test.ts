@@ -4,7 +4,7 @@ import { detectPii } from '../src/pii.js';
 describe('detectPii: email shapes', () => {
   const emails = [
     'jane.doe@example.com',
-    'a@b.co',
+    'a@b.example',
     'first+tag@mail.example.org',
     'x_y-z@sub.domain.example.net',
     'write to jane.doe@example.com for access',
